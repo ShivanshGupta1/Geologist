@@ -54,7 +54,7 @@ class Stone {
   constructor(x,y,width,height){
     this.options = {
       restitution: 0.5,
-      friction: 0,
+      friction: 2,
       density: 5,
     }
     this.width = width;
@@ -84,8 +84,55 @@ class Rubber {
       density: 1,
     }
     this.radius = radius
-
     this.body = Bodies.circle(x,y,this.radius,this.options)
+ 
+    World.add(world,this.body);
+
+  }
+  show() {
+    push()
+    translate(this.body.position.x,this.body.position.y);
+    rotate(this.body.angle)
+    fill("white")
+    this.circle = ellipse(0,0,this.radius);
+    pop()
+
+  }
+}
+class Sand {
+  constructor(x,y,radius){
+    this.options = {
+      restitution: 0.3,
+      friction: 5,
+      density: 2,
+    }
+    this.radius = radius
+    this.body = Bodies.circle(x,y,this.radius,this.options)
+ 
+    World.add(world,this.body);
+
+  }
+  show() {
+    push()
+    translate(this.body.position.x,this.body.position.y);
+    rotate(this.body.angle)
+    fill("yellow")
+    this.circle = ellipse(0,0,this.radius);
+    pop()
+
+  }
+}
+class Iron {
+  constructor(x,y,width,height){
+    this.options = {
+      restitution: 0.5,
+      friction: 3,
+      density: 10,
+    }
+    this.width = width;
+    this.height = height
+
+    this.body = Bodies.rectangle(x,y,this.width,this.height,this.options)
  
     World.add(world,this.body);
 
