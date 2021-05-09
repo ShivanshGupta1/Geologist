@@ -3,13 +3,13 @@ class Hammer {
     this.options = {
       restitution: 0.5,
       friction: 1,
-      density: 2,
+      density: 50,
     };
     this.width = width;
     this.height = height;
     this.body = Bodies.rectangle(
-      mouseX,
-      mouseY,
+      100,
+      100,
       this.width,
       this.height,
       this.options
@@ -19,7 +19,9 @@ class Hammer {
   }
   show() {
     push();
-    translate(mouseX, mouseY);
+    this.body.position.x =mouseX
+    this.body.position.y =mouseY
+    translate(this.body.position.x,this.body.position.y);
     rotate(this.body.angle);
     rectMode(CENTER);
     fill("black");
@@ -55,7 +57,7 @@ class Stone {
     this.options = {
       restitution: 0.5,
       friction: 2,
-      density: 5,
+      density: 15,
     }
     this.width = width;
     this.height = height
@@ -93,8 +95,10 @@ class Rubber {
     push()
     translate(this.body.position.x,this.body.position.y);
     rotate(this.body.angle)
+
     fill("white")
-    this.circle = ellipse(0,0,this.radius);
+    ellipseMode(CENTER)
+    this.circle = ellipse(0,0,50,this.radius);
     pop()
 
   }
